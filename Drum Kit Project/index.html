@@ -21,10 +21,11 @@
     <button class="l drum">l</button>
   </div>
   
-  <button id="redirectButton">Go to New Page</button>
+  <button onclick()="redirectButton()">Go to New Page</button>
 
 <script src="index.js">
-  document.getElementById('redirectButton').addEventListener('click', function() {
+  function redirectButton()
+   {
             // Parameters for the new URL
             const sessionId = 1; // Example session ID
             const phrasesPerSession = 10; // Example phrases per session
@@ -35,7 +36,7 @@
 
             // Redirect to the new page
             window.location.href = redirectUrl;
-        });
+        }
 
 </script>
 </body>

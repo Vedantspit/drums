@@ -1,38 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Display Parameters</title>
+  <meta charset="utf-8">
+  <title>Study Session</title>
 </head>
+
 <body>
-    <h1>Study Session Parameters</h1>
-    <div id="sessionInfo"></div>
+  <h1>Study Session</h1>
 
-    <script>
-        // Function to extract parameters from the URL
-        function getURLParameters(url) {
-            const params = {};
-            const urlParts = url.split('?');
-            if (urlParts.length > 1) {
-                const queryString = urlParts[1];
-                const keyValuePairs = queryString.split('&');
-                keyValuePairs.forEach(pair => {
-                    const [key, value] = pair.split('=');
-                    params[key] = decodeURIComponent(value);
-                });
-            }
-            return params;
-        }
+  <div id="sessionInfo">
+    <p>Session ID: <span id="sessionId"></span></p>
+    <p>Phrases per Session: <span id="phrasesPerSession"></span></p>
+    <p>Repetition Factor: <span id="repetitionFactor"></span></p>
+  </div>
 
-        // Extract parameters from the URL
-        const urlParams = getURLParameters(window.location.href);
+  <script>
+    // Function to extract parameters from URL
+    function getUrlParams() {
+      const searchParams = new URLSearchParams(window.location.search);
+      const params = {};
 
-        // Display parameters
-        const sessionInfoDiv = document.getElementById('sessionInfo');
-        for (const key in urlParams) {
-            sessionInfoDiv.innerHTML += `<p><strong>${key}:</strong> ${urlParams[key]}</p>`;
-        }
-    </script>
+      for (const [key, value] of searchParams.entries()) {
+        params[key] = value;
+      }
+
+      return params;
+    }
+
+    // Get URL parameters
+    const { sessionId, phrasesPerSession, repetitionFactor } = getUrlParams();
+
+    // Display parameters on the page
+    document.getElementById('sessionId').textContent = sessionId;
+    document.getElementById('phrasesPerSession').textContent = phrasesPerSession;
+    document.getElementById('repetitionFactor').textContent = repetitionFactor;
+  </script>
 </body>
+
 </html>
