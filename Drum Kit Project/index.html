@@ -20,8 +20,24 @@
     <button class="k drum">k</button>
     <button class="l drum">l</button>
   </div>
+  
+  <button id="redirectButton">Go to New Page</button>
 
-<script src="index.js"></script>
+<script src="index.js">
+  document.getElementById('redirectButton').addEventListener('click', function() {
+            // Parameters for the new URL
+            const sessionId = 1; // Example session ID
+            const phrasesPerSession = 10; // Example phrases per session
+            const repetitionFactor = 2; // Example repetition factor
+
+            const baseUrl = 'https://drums-eight.vercel.app/';
+            const redirectUrl = `${baseUrl}/study-session.html?sessionId=${sessionId}&phrasesPerSession=${phrasesPerSession}&repetitionFactor=${repetitionFactor}`;
+
+            // Redirect to the new page
+            window.location.href = redirectUrl;
+        });
+
+</script>
 </body>
 <footer>
   Made with ❤️ in Mumbai.
