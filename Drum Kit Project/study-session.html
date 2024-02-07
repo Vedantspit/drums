@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Parameters</title>
+</head>
+<body>
+    <h1>Study Session Parameters</h1>
+    <div id="sessionInfo"></div>
+
+    <script>
+        // Function to extract parameters from the URL
+        function getURLParameters(url) {
+            const params = {};
+            const urlParts = url.split('?');
+            if (urlParts.length > 1) {
+                const queryString = urlParts[1];
+                const keyValuePairs = queryString.split('&');
+                keyValuePairs.forEach(pair => {
+                    const [key, value] = pair.split('=');
+                    params[key] = decodeURIComponent(value);
+                });
+            }
+            return params;
+        }
+
+        // Extract parameters from the URL
+        const urlParams = getURLParameters(window.location.href);
+
+        // Display parameters
+        const sessionInfoDiv = document.getElementById('sessionInfo');
+        for (const key in urlParams) {
+            sessionInfoDiv.innerHTML += `<p><strong>${key}:</strong> ${urlParams[key]}</p>`;
+        }
+    </script>
+</body>
+</html>
