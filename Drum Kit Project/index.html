@@ -23,15 +23,17 @@
   
   <button onclick()="redirectButton()">Go to New Page</button>
 
-<script src="index.js">
+<script src="index.js"></script>
+<script>
   function redirectButton()
    {
+            console.log("im in redirect function");
             // Parameters for the new URL
             const sessionId = 1; // Example session ID
             const phrasesPerSession = 10; // Example phrases per session
             const repetitionFactor = 2; // Example repetition factor
 
-            const baseUrl = 'https://drums-eight.vercel.app/';
+            const baseUrl = 'Drum Kit Project/index.html';
             const redirectUrl = `${baseUrl}/study-session.html?sessionId=${sessionId}&phrasesPerSession=${phrasesPerSession}&repetitionFactor=${repetitionFactor}`;
 
             // Redirect to the new page
